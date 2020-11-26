@@ -120,8 +120,6 @@
             </div>
 
 
-
-
             <div class="input-wrapper unvalid">
 
                 <label for="exampleRadios11"><span class="showIfErr">*</span>Radio Selection 2:</label><br>
@@ -151,7 +149,6 @@
 
 
 
-
             <div class="input-wrapper unvalid">
                 <div class="validate-input ">
                     <div class="form-check">
@@ -169,13 +166,6 @@
                 </div>
 
             </div>
-
-
-
-
-
-
-
 
 
 

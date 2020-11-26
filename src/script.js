@@ -4,6 +4,8 @@ var submitBtn = document.querySelector(".submitBtn");
 var submitBtn_wrapper = document.querySelector(".submit-btn-wrapper");
 var submitBtn_overlay = document.querySelector(".submitbuttonOverlay");
 var input_wrapper = document.querySelectorAll(".input-wrapper");
+var radios = document.querySelectorAll(".radio-input");
+var checkboxes = document.querySelectorAll(".checkbox-check");
 var thisObj;
 var inputAttr;
 
@@ -13,6 +15,10 @@ $(".inputMask :input").inputmask();
 
 //event for input on blur
 input.forEach(i => i.addEventListener("blur", inputOnBlur));
+//event to validate radio buttons
+radios.forEach(i => i.addEventListener("click", checkRadioVal));
+//event to validate checkboxes
+checkboxes.forEach(i => i.addEventListener("click", checkIfCheckboxesChecked));
 
 //event for submit button on click
 submitBtn_wrapper.addEventListener("click", function (e) {
@@ -238,9 +244,7 @@ function checkContstraints(x) {
       conditional: x.value.length > 1
     },
     email: {
-      conditional: val.match(
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      )
+      conditional: val.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     },
     phone: {
       conditional: phoneNumber(x)
@@ -269,10 +273,6 @@ function checkIfInputempty(y) {
 
 
 // Validate radio buttons on selection
-var radios = document.querySelectorAll(".radio-input");
-
-radios.forEach(i => i.addEventListener("click", checkRadioVal));
-
 var value;
 
 function checkRadioVal() {
@@ -291,10 +291,6 @@ function checkRadioVal() {
 
 
 //Check if stand alone checkboxes are checked off
-var checkboxes = document.querySelectorAll(".checkbox-check");
-
-checkboxes.forEach(i => i.addEventListener("click", checkIfCheckboxesChecked));
-
 function checkIfCheckboxesChecked() {
   thisObj = this;
 

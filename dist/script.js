@@ -6,6 +6,8 @@ var submitBtn = document.querySelector(".submitBtn");
 var submitBtn_wrapper = document.querySelector(".submit-btn-wrapper");
 var submitBtn_overlay = document.querySelector(".submitbuttonOverlay");
 var input_wrapper = document.querySelectorAll(".input-wrapper");
+var radios = document.querySelectorAll(".radio-input");
+var checkboxes = document.querySelectorAll(".checkbox-check");
 var thisObj;
 var inputAttr;
 
@@ -16,6 +18,14 @@ $(".inputMask :input").inputmask();
 //event for input on blur
 input.forEach(function (i) {
   return i.addEventListener("blur", inputOnBlur);
+});
+//event to validate radio buttons
+radios.forEach(function (i) {
+  return i.addEventListener("click", checkRadioVal);
+});
+//event to validate checkboxes
+checkboxes.forEach(function (i) {
+  return i.addEventListener("click", checkIfCheckboxesChecked);
 });
 
 //event for submit button on click
@@ -262,12 +272,6 @@ function checkIfInputempty(y) {
 }
 
 // Validate radio buttons on selection
-var radios = document.querySelectorAll(".radio-input");
-
-radios.forEach(function (i) {
-  return i.addEventListener("click", checkRadioVal);
-});
-
 var value;
 
 function checkRadioVal() {
@@ -283,12 +287,6 @@ function checkRadioVal() {
 }
 
 //Check if stand alone checkboxes are checked off
-var checkboxes = document.querySelectorAll(".checkbox-check");
-
-checkboxes.forEach(function (i) {
-  return i.addEventListener("click", checkIfCheckboxesChecked);
-});
-
 function checkIfCheckboxesChecked() {
   thisObj = this;
 
