@@ -36,6 +36,16 @@
                 </div>
             </div>
 
+            <div class="input-wrapper valid">
+                <label for="mname"><span class="showIfErr">*</span>Middle name (Optional):</label><br>
+                <input class="form-input validate-input emptyForm" data-validate="optional" type="text" id="mname"
+                    name="mname">
+                <div class="errorMessage">
+                    Please enter Last Name
+                </div>
+
+            </div>
+
             <div class="input-wrapper unvalid">
                 <label for="lname"><span class="showIfErr">*</span>Last name:</label><br>
                 <input class="form-input validate-input emptyForm" data-validate="name" type="text" id="lname"
@@ -64,6 +74,7 @@
                     Please enter Phone Number
                 </div>
             </div>
+
 
 
             <div class="input-wrapper inputMask unvalid">
@@ -120,32 +131,7 @@
             </div>
 
 
-            <div class="input-wrapper unvalid">
 
-                <label for="exampleRadios11"><span class="showIfErr">*</span>Radio Selection 2:</label><br>
-                <div class="validate-input radioWrapper">
-                    <div class="form-check form-check-radio">
-
-                        <label class="form-check-label" for="exampleRadios13">
-                            <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios11"
-                                id="exampleRadios13" value="option3">
-                            Option 3
-                        </label>
-                    </div>
-                    <div class="form-check form-check-radio">
-
-                        <label class="form-check-label" for="exampleRadios21">
-                            <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios11"
-                                id="exampleRadios21" value="option4">
-                            Option 4
-                        </label>
-                    </div>
-                </div>
-                <div class="errorMessage">
-                    Please select one
-                </div>
-
-            </div>
 
 
 
@@ -154,7 +140,8 @@
                     <div class="form-check">
 
                         <label class="form-check-label checkbox-label" for="defaultCheck1">
-                            <input class="form-check-input checkbox-check" type="checkbox" value="" id="defaultCheck1">
+                            <input class="form-check-input checkbox-check" data-validate-type="checkbox" type="checkbox"
+                                value="" id="defaultCheck1">
                             <span class="box"></span>
                             <span class="showIfErr">*</span>
                             <p> Lorem Ipsum is simply dummy text of the printing and
@@ -167,6 +154,86 @@
 
             </div>
 
+
+
+            <div class="input-wrapper valid">
+
+                <div class="form-check">
+
+                    <label class="form-check-label checkbox-label" for="hiddenFieldsCheckbox">
+                        <input class="form-check-input checkbox-check checkbox-progessive-reveal" type="checkbox"
+                            value="" id="hiddenFieldsCheckbox">
+                        <span class="box"></span>
+
+                        <p>Reveal Hidden Form (Optional)</p>
+                    </label>
+                </div>
+
+
+            </div>
+
+
+            <!-- hidden field -->
+            <div class="hiddenField" style="display: none;">
+
+
+                <div class="input-wrapper unvalid">
+                    <label for="hiddenInput"><span class="showIfErr">*</span>Hidden Input:</label><br>
+                    <input class="form-input validate-input emptyForm" data-validate="name" type="text" id="hiddenInput"
+                        name="hiddenInput">
+                    <div class="errorMessage">
+                        Please enter some text
+                    </div>
+                </div>
+
+
+                <div class="input-wrapper unvalid">
+
+                    <label for="exampleRadios11"><span class="showIfErr">*</span>Hidden Radio Selection:</label><br>
+                    <div class="validate-input radioWrapper">
+                        <div class="form-check form-check-radio">
+
+                            <label class="form-check-label" for="exampleRadios13">
+                                <input class="form-check-input radio-input emptyForm" type="radio"
+                                    name="exampleRadios11" id="exampleRadios13" value="option3">
+                                Option 3
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+
+                            <label class="form-check-label" for="exampleRadios21">
+                                <input class="form-check-input radio-input emptyForm" type="radio"
+                                    name="exampleRadios11" id="exampleRadios21" value="option4">
+                                Option 4
+                            </label>
+                        </div>
+                    </div>
+                    <div class="errorMessage">
+                        Please select one
+                    </div>
+
+                </div>
+
+
+
+                <div class="input-wrapper unvalid">
+                    <div class="validate-input ">
+                        <div class="form-check">
+
+                            <label class="form-check-label checkbox-label" for="defaultCheck2">
+                                <input class="form-check-input checkbox-check" data-validate-type="checkbox"
+                                    type="checkbox" value="" id="defaultCheck2">
+                                <span class="box"></span>
+                                <span class="showIfErr">*</span>
+                                <p> Hidden checkbox</p>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
 
 
             <div class="submit-btn-wrapper">

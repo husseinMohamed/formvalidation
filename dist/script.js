@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-var input = document.querySelectorAll(".form-input");
-var validate_input = document.querySelectorAll(".validate-input");
+var input = document.querySelectorAll('.form-input:not([style*="display:none"]):not([style*="display: none"])');
+var validate_input = document.querySelectorAll('.validate-input:not([style*="display:none"]):not([style*="display: none"])');
 var submitBtn = document.querySelector(".submitBtn");
 var submitBtn_wrapper = document.querySelector(".submit-btn-wrapper");
 var submitBtn_overlay = document.querySelector(".submitbuttonOverlay");
-var input_wrapper = document.querySelectorAll(".input-wrapper");
+var input_wrapper = document.querySelectorAll('.input-wrapper:not([style*="display:none"]):not([style*="display: none"])');
 var radios = document.querySelectorAll(".radio-input");
 var checkboxes = document.querySelectorAll(".checkbox-check");
 var thisObj;
@@ -46,7 +46,7 @@ for (var i = 0; i < validate_input.length; i++) {
   validate_input[i].addEventListener("click", function (j) {
     return function () {
       for (var k = 0; k < j; k++) {
-        var emptyForms = input_wrapper;
+        var emptyForms = document.querySelectorAll('.input-wrapper:not([style*="display:none"]):not([style*="display: none"])');
         addRedBorderOnSubmit(emptyForms[k]);
       }
     };
@@ -55,7 +55,7 @@ for (var i = 0; i < validate_input.length; i++) {
 
 //Enable/disable button
 function checkIfInputsAllFilled() {
-  var valid_form = document.querySelectorAll(".unvalid");
+  var valid_form = document.querySelectorAll('.unvalid:not([style*="display:none"]):not([style*="display: none"])');
   for (var i = 0; i < valid_form.length; i++) {}
 
   if (i === 0) {
@@ -89,8 +89,7 @@ function inputOnBlur() {
 
 //Check inputs on submit
 function checkInputsOnSubmit() {
-  var input_wrapper_unvalid = document.querySelectorAll(".unvalid");
-  var emptyForms = input_wrapper;
+  var emptyForms = document.querySelectorAll('.input-wrapper:not([style*="display:none"]):not([style*="display: none"])');
   for (var i = 0; i < emptyForms.length; i++) {
     addRedBorderOnSubmit(emptyForms[i]);
   }
@@ -256,6 +255,9 @@ function checkContstraints(x) {
     },
     dob: {
       conditional: dobCheck(x)
+    },
+    optional: {
+      conditional: true
     }
   };
 }
@@ -289,12 +291,47 @@ function checkRadioVal() {
 //Check if stand alone checkboxes are checked off
 function checkIfCheckboxesChecked() {
   thisObj = this;
+  var getCheckboxDataValidateType = thisObj.getAttribute("data-validate-type");
 
-  if (thisObj.type === "checkbox" && thisObj.checked) {
-    removeErrorClasses(thisObj);
-  } else {
-    addErrorClasses(thisObj);
+  if (getCheckboxDataValidateType === "checkbox") {
+    if (thisObj.checked) {
+      removeErrorClasses(thisObj);
+    } else {
+      addErrorClasses(thisObj);
+    }
   }
 
   checkIfInputsAllFilled();
 }
+
+//submit form
+submitBtn.addEventListener("click", function () {
+  console.log("form sent");
+});
+
+//Show hidden form fields
+var hiddenField = document.querySelector(".hiddenField");
+var hiddenField_children = document.querySelector('.hiddenField').childNodes;
+
+function addDisplayStyleToHiddenFields(x) {
+  hiddenField.style.display = x;
+  for (var i = 0; i < hiddenField_children.length; i++) {
+    if (hiddenField_children[i].nodeName.toLowerCase() == 'div') {
+      hiddenField_children[i].style.display = x;
+    }
+  }
+}
+
+addDisplayStyleToHiddenFields("none");
+
+document.querySelector(".checkbox-progessive-reveal").addEventListener("click", function () {
+  thisObj = this;
+
+  if (thisObj.checked) {
+
+    addDisplayStyleToHiddenFields("block");
+  } else {
+    addDisplayStyleToHiddenFields("none");
+  }
+  checkIfInputsAllFilled();
+});
