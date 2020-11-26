@@ -7,16 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="shortcut icon" href="favicon-hm.ico" />
+
     <link rel="alternate" href="" hreflang="en-us" />
     <link href="" rel="canonical" />
-    <meta property="og:title" content="" />
+    <meta property="og:title" content="Form Validation" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
-    <meta name="description" content="" />
+    <meta name="description" content="Form validation - vanilla js" />
 
     <?php include 'includes/header-script.php'; ?>
-    <title></title>
+    <title>Form Validation</title>
 
 
 </head>
