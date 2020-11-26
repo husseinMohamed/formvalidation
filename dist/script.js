@@ -2,13 +2,10 @@
 
 var input = document.querySelectorAll(".form-input");
 var validate_input = document.querySelectorAll(".validate-input");
-
 var submitBtn = document.querySelector(".submitBtn");
 var submitBtn_wrapper = document.querySelector(".submit-btn-wrapper");
 var submitBtn_overlay = document.querySelector(".submitbuttonOverlay");
-
 var input_wrapper = document.querySelectorAll(".input-wrapper");
-
 var thisObj;
 var inputAttr;
 
@@ -206,10 +203,24 @@ function dobCheck(dobInput) {
   }
 }
 
+//Remove and add valid/unvalid classes to inputs
+function removeErrorClasses(x) {
+  x.classList.remove("emptyForm");
+  x.closest(".input-wrapper").classList.remove("unvalid");
+  x.closest(".input-wrapper").classList.add("valid");
+  removeErrorStates(x.closest(".input-wrapper"));
+}
+
+function addErrorClasses(x) {
+  x.classList.add("emptyForm");
+  x.closest(".input-wrapper").classList.remove("valid");
+  x.closest(".input-wrapper").classList.add("unvalid");
+  addErrorStates(x.closest(".input-wrapper"));
+}
+
 //inputs on focusout
 var contstraints;
 var pattern;
-
 var self;
 var val;
 var len;
@@ -243,30 +254,13 @@ function checkContstraints(x) {
 function checkIfInputempty(y) {
   checkContstraints(thisObj);
 
-  var str = thisObj.value;
-  var len = thisObj.value.length;
-  // pattern = contstraints[y]['pattern'];
-  // console.log(pattern);
-
-  // console.log(contstraints[y]['conditional']);
-
-  //console.log(thisObj);
-
   if (contstraints[y]["conditional"]) {
-    thisObj.classList.remove("emptyForm");
-    thisObj.parentNode.classList.remove("unvalid");
-    thisObj.parentNode.classList.add("valid");
-    removeErrorStates(thisObj.parentNode);
+    removeErrorClasses(thisObj);
   } else {
-    thisObj.classList.add("emptyForm");
-    thisObj.parentNode.classList.remove("valid");
-    thisObj.parentNode.classList.add("unvalid");
-    addErrorStates(thisObj.parentNode);
+    addErrorClasses(thisObj);
   }
 }
-//
-//
-//
+
 // Validate radio buttons on selection
 var radios = document.querySelectorAll(".radio-input");
 
@@ -277,25 +271,17 @@ radios.forEach(function (i) {
 var value;
 
 function checkRadioVal() {
+  thisObj = this;
   for (var i = 0; i < radios.length; i++) {
     if (radios[i].type === "radio" && radios[i].checked) {
       // get value, set checked flag or do whatever you need to
       value = radios[i].value;
-
-      this.classList.remove("emptyForm");
-      this.parentNode.parentNode.parentNode.parentNode.classList.remove("unvalid");
-      this.parentNode.parentNode.parentNode.parentNode.classList.add("valid");
-      removeErrorStates(this.parentNode.parentNode.parentNode.parentNode);
+      removeErrorClasses(thisObj);
     }
   }
-
   checkIfInputsAllFilled();
 }
-//
 
-//
-
-//
 //Check if stand alone checkboxes are checked off
 var checkboxes = document.querySelectorAll(".checkbox-check");
 
@@ -304,16 +290,12 @@ checkboxes.forEach(function (i) {
 });
 
 function checkIfCheckboxesChecked() {
-  if (this.type === "checkbox" && this.checked) {
-    this.classList.remove("emptyForm");
-    this.parentNode.parentNode.parentNode.parentNode.classList.remove("unvalid");
-    this.parentNode.parentNode.parentNode.parentNode.classList.add("valid");
-    removeErrorStates(this.parentNode.parentNode.parentNode.parentNode);
+  thisObj = this;
+
+  if (thisObj.type === "checkbox" && thisObj.checked) {
+    removeErrorClasses(thisObj);
   } else {
-    this.classList.add("emptyForm");
-    this.parentNode.parentNode.parentNode.parentNode.classList.remove("valid");
-    this.parentNode.parentNode.parentNode.parentNode.classList.add("unvalid");
-    addErrorStates(this.parentNode.parentNode.parentNode.parentNode);
+    addErrorClasses(thisObj);
   }
 
   checkIfInputsAllFilled();

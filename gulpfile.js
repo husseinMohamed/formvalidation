@@ -121,8 +121,8 @@ gulp.task('watch', function () {
 
 gulp.task('browserSync', function () {
     browserSync.init({
-        proxy: "localhost:8020",
-        port: 8020,
+        proxy: "localhost:8021",
+        port: 8021,
         baseDir: "./",
         open: true,
         notify: false
@@ -132,7 +132,7 @@ gulp.task('browserSync', function () {
 gulp.task('serve', gulp.parallel('browserSync', function () {
     php.server({
         base: './',
-        port: 8020,
+        port: 8021,
         keepalive: true
     });
 

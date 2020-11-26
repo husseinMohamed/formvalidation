@@ -96,7 +96,7 @@
 
                 <label for="exampleRadios"><span class="showIfErr">*</span>Radio Selection:</label><br>
                 <div class="validate-input radioWrapper">
-                    <div class="form-check">
+                    <div class="form-check form-check-radio">
 
                         <label class="form-check-label" for="exampleRadios1">
                             <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios"
@@ -104,7 +104,7 @@
                             Option 1
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check form-check-radio">
 
                         <label class="form-check-label" for="exampleRadios2">
                             <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios"
@@ -126,7 +126,7 @@
 
                 <label for="exampleRadios11"><span class="showIfErr">*</span>Radio Selection 2:</label><br>
                 <div class="validate-input radioWrapper">
-                    <div class="form-check">
+                    <div class="form-check form-check-radio">
 
                         <label class="form-check-label" for="exampleRadios13">
                             <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios11"
@@ -134,7 +134,7 @@
                             Option 3
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check form-check-radio">
 
                         <label class="form-check-label" for="exampleRadios21">
                             <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios11"
@@ -153,7 +153,7 @@
 
 
             <div class="input-wrapper unvalid">
-                <div class="validate-input radioWrapper">
+                <div class="validate-input ">
                     <div class="form-check">
 
                         <label class="form-check-label checkbox-label" for="defaultCheck1">
