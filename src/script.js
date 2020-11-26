@@ -1,5 +1,5 @@
 var input = document.querySelectorAll('.form-input:not([style*="display:none"]):not([style*="display: none"])');
-var validate_input = document.querySelectorAll('.validate-input:not([style*="display:none"]):not([style*="display: none"])');
+var validate_input = document.querySelectorAll('.validate-input');
 var submitBtn = document.querySelector(".submitBtn");
 var submitBtn_wrapper = document.querySelector(".submit-btn-wrapper");
 var submitBtn_overlay = document.querySelector(".submitbuttonOverlay");
@@ -41,7 +41,7 @@ for (var i = 0; i < validate_input.length; i++) {
     (j => {
       return function () {
         for (var k = 0; k < j; k++) {
-          var emptyForms = document.querySelectorAll('.input-wrapper:not([style*="display:none"]):not([style*="display: none"])');
+          var emptyForms = input_wrapper;
           addRedBorderOnSubmit(emptyForms[k]);
         }
       };
@@ -280,11 +280,17 @@ var value;
 
 function checkRadioVal() {
   thisObj = this;
+  var getRadioDataValidateType = thisObj.getAttribute("data-validate-type");
+
+
   for (var i = 0; i < radios.length; i++) {
-    if (radios[i].type === "radio" && radios[i].checked) {
-      // get value, set checked flag or do whatever you need to
-      value = radios[i].value;
-      removeErrorClasses(thisObj)
+    if (getRadioDataValidateType === "radio") {
+      //   if (radios[i].type === "radio" && radios[i].checked) {
+      if (radios[i].type === "radio" && radios[i].checked) {
+        // get value, set checked flag or do whatever you need to
+        value = radios[i].value;
+        removeErrorClasses(thisObj)
+      }
     }
   }
   checkIfInputsAllFilled();
@@ -313,7 +319,8 @@ function checkIfCheckboxesChecked() {
 
 
 //submit form
-submitBtn.addEventListener("click", function () {
+submitBtn.addEventListener("click", function (e) {
+  e.preventDefault();
   console.log("form sent");
 });
 

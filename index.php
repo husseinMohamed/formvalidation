@@ -37,7 +37,7 @@
             </div>
 
             <div class="input-wrapper valid">
-                <label for="mname"><span class="showIfErr">*</span>Middle name (Optional):</label><br>
+                <label for="mname"><span class="showIfErr">*</span>Middle name: (Optional)</label><br>
                 <input class="form-input validate-input emptyForm" data-validate="optional" type="text" id="mname"
                     name="mname">
                 <div class="errorMessage">
@@ -110,16 +110,16 @@
                     <div class="form-check form-check-radio">
 
                         <label class="form-check-label" for="exampleRadios1">
-                            <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios"
-                                id="exampleRadios1" value="option1">
+                            <input class="form-check-input radio-input emptyForm" data-validate-type="radio"
+                                type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
                             Option 1
                         </label>
                     </div>
                     <div class="form-check form-check-radio">
 
                         <label class="form-check-label" for="exampleRadios2">
-                            <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadios"
-                                id="exampleRadios2" value="option2">
+                            <input class="form-check-input radio-input emptyForm" data-validate-type="radio"
+                                type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                             Option 2
                         </label>
                     </div>
@@ -131,7 +131,28 @@
             </div>
 
 
+            <!-- Example of optional radio form -->
+            <!-- <div class="input-wrapper valid ">
+                 <label for="exampleRadiosOp">Radio Selection: (Optional)</label><br>
+                <div class="validate-input radioWrapper">
+                    <div class="form-check form-check-radio">
 
+                        <label class="form-check-label" for="exampleRadiosOptional">
+                            <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadiosop"
+                                id="exampleRadiosOptional" value="option1-Optional">
+                            Option 1 Optional
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio">
+
+                        <label class="form-check-label" for="exampleRadios2Optional">
+                            <input class="form-check-input radio-input emptyForm" type="radio" name="exampleRadiosOp"
+                                id="exampleRadios2Optional" value="option2-Optional">
+                            Option 2 Optional
+                        </label>
+                    </div>
+                </div>
+            </div> -->
 
 
 
@@ -157,19 +178,19 @@
 
 
             <div class="input-wrapper valid">
+                <div class="validate-input ">
+                    <div class="form-check">
 
-                <div class="form-check">
+                        <label class="form-check-label checkbox-label" for="hiddenFieldsCheckbox">
+                            <input class="form-check-input checkbox-check checkbox-progessive-reveal" type="checkbox"
+                                value="" id="hiddenFieldsCheckbox">
+                            <span class="box"></span>
 
-                    <label class="form-check-label checkbox-label" for="hiddenFieldsCheckbox">
-                        <input class="form-check-input checkbox-check checkbox-progessive-reveal" type="checkbox"
-                            value="" id="hiddenFieldsCheckbox">
-                        <span class="box"></span>
+                            <p>Reveal Hidden Form (Optional)</p>
+                        </label>
+                    </div>
 
-                        <p>Reveal Hidden Form (Optional)</p>
-                    </label>
                 </div>
-
-
             </div>
 
 
@@ -194,16 +215,16 @@
                         <div class="form-check form-check-radio">
 
                             <label class="form-check-label" for="exampleRadios13">
-                                <input class="form-check-input radio-input emptyForm" type="radio"
-                                    name="exampleRadios11" id="exampleRadios13" value="option3">
+                                <input class="form-check-input radio-input emptyForm" data-validate-type="radio"
+                                    type="radio" name="exampleRadios11" id="exampleRadios13" value="option3">
                                 Option 3
                             </label>
                         </div>
                         <div class="form-check form-check-radio">
 
                             <label class="form-check-label" for="exampleRadios21">
-                                <input class="form-check-input radio-input emptyForm" type="radio"
-                                    name="exampleRadios11" id="exampleRadios21" value="option4">
+                                <input class="form-check-input radio-input emptyForm" data-validate-type="radio"
+                                    type="radio" name="exampleRadios11" id="exampleRadios21" value="option4">
                                 Option 4
                             </label>
                         </div>
