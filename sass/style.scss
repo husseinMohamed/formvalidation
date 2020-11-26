@@ -283,3 +283,11 @@ input[type="checkbox"]:checked+.box:before {
 
 
 }
+
+//Remove google chrome autofill background color change
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
