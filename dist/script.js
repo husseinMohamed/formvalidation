@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 var input = document.querySelectorAll('.form-input:not([style*="display:none"]):not([style*="display: none"])');
-var validate_input = document.querySelectorAll('.validate-input');
+var validate_input = document.querySelectorAll(".validate-input");
 var submitBtn = document.querySelector(".submitBtn");
 var submitBtn_wrapper = document.querySelector(".submit-btn-wrapper");
 var submitBtn_overlay = document.querySelector(".submitbuttonOverlay");
@@ -53,10 +53,20 @@ for (var i = 0; i < validate_input.length; i++) {
   }(i));
 }
 
-//Enable/disable button
+//Enable/disable button ********************************************************************************************************
 function checkIfInputsAllFilled() {
+  // hideAllchildren();
+
   var valid_form = document.querySelectorAll('.unvalid:not([style*="display:none"]):not([style*="display: none"])');
+  //var valid_form = document.querySelectorAll('.unvalid:not([style="display:none"]');
+
+  var activateBtn = $(".unvalid:visible");
   for (var i = 0; i < valid_form.length; i++) {}
+  // console.log(activateBtn);
+  console.log(i);
+  //
+  //
+  //
 
   if (i === 0) {
     submitBtn.style.backgroundColor = "#5bc2e7";
@@ -314,30 +324,147 @@ submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
   console.log("form sent");
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 //Show hidden form fields
-var hiddenField = document.querySelector(".hiddenField");
-var hiddenField_children = document.querySelector('.hiddenField').childNodes;
 
-function addDisplayStyleToHiddenFields(x) {
-  hiddenField.style.display = x;
-  for (var i = 0; i < hiddenField_children.length; i++) {
-    if (hiddenField_children[i].nodeName.toLowerCase() == 'div') {
-      hiddenField_children[i].style.display = x;
+var progressive_reveal = document.querySelectorAll(".progessive-reveal");
+var hiddenForm = document.querySelectorAll(".hiddenField");
+
+progressive_reveal.forEach(function (i) {
+  return i.addEventListener("click", progressiveReveal);
+});
+
+function progressiveReveal() {
+  thisObj = this;
+
+  var data_reveal_attr = thisObj.getAttribute("data-reveal");
+
+  //console.log(hiddenForm);
+
+  for (var i = 0; i < hiddenForm.length; i++) {
+    var hidden_element = hiddenForm[i];
+    // console.log(hidden_element);
+    var collectiveForm = hiddenForm[i];
+
+    var data_hidden_attr = hiddenForm[i].getAttribute("data-hidden");
+
+    if (data_reveal_attr == data_hidden_attr) {
+      var getDataValidateType = thisObj.getAttribute("type");
+
+      if (getDataValidateType === "checkbox") {
+        if (thisObj.checked) {
+          hidden_element.style.display = "block";
+          addDisplayStyleToHiddenFields("block", hidden_element);
+        } else {
+          hidden_element.style.display = "none";
+          //console.log(collectiveForm);
+          addDisplayStyleToHiddenFields("none", hidden_element);
+        }
+      }
+
+      if (getDataValidateType === "radio") {
+        for (var i = 0; i < radios.length; i++) {
+          //  console.log(radios[i].classList.contains('progessive-reveal'));
+          if (radios[i].checked && radios[i].classList.contains("trigger-reveal")) {
+            hidden_element.style.display = "block";
+            addDisplayStyleToHiddenFields("block", hidden_element);
+          } else {
+            hidden_element.style.display = "none";
+            addDisplayStyleToHiddenFields("none", hidden_element);
+          }
+        }
+      }
+    }
+  }
+  hideAllchildren();
+  checkIfInputsAllFilled();
+}
+
+//var hiddenField = document.querySelector(".hiddenField");
+
+var hiddenForm1 = document.querySelectorAll(".hiddenField");
+
+function addDisplayStyleToHiddenFields(x, y) {
+  //console.log(y.children);
+  var childrenOfHiddenField = y.children;
+  //var hiddenForm_children = document.querySelectorAll(".hiddenField").childNodes;
+  // hiddenForm.style.display = x;
+
+  for (var i = 0; i < childrenOfHiddenField.length; i++) {
+    var hiddenForm_children = childrenOfHiddenField[i];
+    //console.log(hiddenForm_children);
+    hiddenForm_children.style.display = x;
+  }
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+for (var i = 0; i < hiddenForm.length; i++) {
+  var hidden_element = hiddenForm[i];
+  addDisplayStyleToHiddenFields("none", hidden_element);
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+function hideAllchildren() {
+  var hiddenFormNew = document.querySelectorAll(".nestedHiddenField");
+
+  for (var i = 0; i < hiddenFormNew.length; i++) {
+    var parent = hiddenFormNew[i];
+    var hiddenForm_children = hiddenFormNew[i].children;
+    //console.log(parent.closest(".hiddenFieldParent"));
+    for (var i = 0; i < hiddenForm_children.length; i++) {
+      //
+      //
+      //
+      if (parent.closest(".hiddenFieldParent").style.display == "none") {
+        // console.log("hidden");
+        hiddenForm_children[i].style.display = "none";
+      } else {
+        if (parent.style.display == "none") {
+          hiddenForm_children[i].style.display = "none";
+        } else {
+          hiddenForm_children[i].style.display = "block";
+        }
+      }
     }
   }
 }
 
-addDisplayStyleToHiddenFields("none");
-
-document.querySelector(".checkbox-progessive-reveal").addEventListener("click", function () {
-  thisObj = this;
-
-  if (thisObj.checked) {
-
-    addDisplayStyleToHiddenFields("block");
-  } else {
-    addDisplayStyleToHiddenFields("none");
-  }
-  checkIfInputsAllFilled();
-});
+// document.querySelector(".radioWrapper").addEventListener("click", function() {
+//   console.log("clicked");
+// });

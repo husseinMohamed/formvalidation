@@ -184,8 +184,8 @@
                     <div class="form-check">
 
                         <label class="form-check-label checkbox-label" for="hiddenFieldsCheckbox">
-                            <input class="form-check-input checkbox-check checkbox-progessive-reveal" type="checkbox"
-                                value="" id="hiddenFieldsCheckbox">
+                            <input class="form-check-input checkbox-check progessive-reveal" data-reveal="hiddenForm1"
+                                type="checkbox" value="" id="hiddenFieldsCheckbox">
                             <span class="box"></span>
 
                             <p>Reveal Hidden Form (Optional)</p>
@@ -197,7 +197,7 @@
 
 
             <!-- hidden field -->
-            <div class="hiddenField" style="display: none;">
+            <div class="hiddenField hiddenFieldParent" style="display: none;" data-hidden="hiddenForm1">
 
 
                 <div class="input-wrapper unvalid">
@@ -210,6 +210,8 @@
                 </div>
 
 
+
+
                 <div class="input-wrapper unvalid">
 
                     <label for="exampleRadios11"><span class="showIfErr">*</span>Hidden Radio Selection:</label><br>
@@ -217,19 +219,46 @@
                         <div class="form-check form-check-radio">
 
                             <label class="form-check-label" for="exampleRadios13">
-                                <input class="form-check-input radio-input emptyForm" data-validate-type="radio"
-                                    type="radio" name="exampleRadios11" id="exampleRadios13" value="option3">
+                                <input class="form-check-input radio-input emptyForm progessive-reveal"
+                                    data-validate-type="radio" data-reveal="randomHiddenInput" type="radio"
+                                    name="exampleRadios11" id="exampleRadios13" value="option3">
                                 Option 3
                             </label>
                         </div>
+
+
                         <div class="form-check form-check-radio">
 
                             <label class="form-check-label" for="exampleRadios21">
-                                <input class="form-check-input radio-input emptyForm" data-validate-type="radio"
-                                    type="radio" name="exampleRadios11" id="exampleRadios21" value="option4">
-                                Option 4
+                                <input class="form-check-input radio-input emptyForm progessive-reveal trigger-reveal"
+                                    data-reveal="randomHiddenInput" data-validate-type="radio" type="radio"
+                                    name="exampleRadios11" id="exampleRadios21" value="option4">
+                                Option 4 - (click to reveal hidden input)
                             </label>
                         </div>
+
+
+
+                        <!-- <div class="nestedHiddenField"> -->
+                        <div class="nestedHiddenField hiddenField" style="display: none;"
+                            data-hidden="randomHiddenInput">
+
+                            <div class="input-wrapper unvalid ">
+                                <label for="hiddenInputrandom"><span class="showIfErr">*</span>Hidden
+                                    Input:</label><br>
+                                <input class="form-input validate-input emptyForm" data-validate="name" type="text"
+                                    id="hiddenInputrandom" name="hiddenInputrandom">
+                                <div class="errorMessage">
+                                    Please enter some text
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- </div> -->
+
+
+
+
                     </div>
                     <div class="errorMessage">
                         Please select one
